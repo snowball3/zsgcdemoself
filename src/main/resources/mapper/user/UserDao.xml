@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--- namespace=""里面填UserDao的Reference,直接copy就行-->
+<mapper namespace="com.dg.zsgcdemoself.dao.UserDao">
+    <select id="getAll" resultType="com.dg.zsgcdemoself.entity.UserEntity" parameterType="java.util.Map">
+        select * from user
+    </select>
+
+    <delete id="delById" parameterType="java.lang.Integer">
+        delete  from user where id=${id};
+    </delete>
+
+    <insert id="save" parameterType="com.dg.zsgcdemoself.entity.UserEntity">
+        INSERT INTO `zsgcdemoself`.`user`
+	        ( `id`, `username`, `password`, `createtime`, `status` )
+        VALUES
+        (
+            null ,
+            #{username},
+            #{password},
+            #{createtime},
+            #{status}
+        );
+    </insert>
+
+</mapper>
